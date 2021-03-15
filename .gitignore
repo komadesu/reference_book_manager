@@ -37,3 +37,4 @@ src/.yarn-integrity
 
 # 追記
 docker/db/db-variables.env
+src/.env
