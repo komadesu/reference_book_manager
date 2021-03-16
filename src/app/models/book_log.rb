@@ -1,0 +1,2 @@
+class BookLog < ApplicationRecord
+end
