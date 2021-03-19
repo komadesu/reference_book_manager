@@ -11,7 +11,7 @@ class BookLogsController < ApplicationController
     if book_log.save
       redirect_to book_log
     else
-      flash.now[:error] = 'データの登録に失敗しました'
+      flash.now[:errors] = book_log.errors.full_messages
       render 'new'
     end
   end
@@ -31,7 +31,7 @@ class BookLogsController < ApplicationController
   private
 
   def book_log_params
-    params.require(:book_log).permit(:title, :author, :status, :score, :summary)
+    params.permit(:title, :author, :status, :score, :summary)
   end
 
 end

@@ -4,9 +4,7 @@
 
 <h2>新規画面</h2>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, class: name %>
-<% end %>
+<%= render 'error_form', locals: { errors: flash[:errors] } %>
 
 <%= form_with model: @book_log, local: true do |f| %>
   <%= f.label :title, '書籍名' %>
@@ -14,7 +12,7 @@
   <%= f.label :author, '著者名' %>
   <%= f.text_field :author %>
 
-  <%= f.radio_button :status, :unread %>
+  <%= f.radio_button :status, :unread, checked: true %>
   <%= f.label :status, '未読', {value: :unread} %>
   <%= f.radio_button :status, :reading %>
   <%= f.label :status, '途中', {value: :reading} %>
