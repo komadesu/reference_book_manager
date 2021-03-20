@@ -10,7 +10,7 @@ class BookLogsController < ApplicationController
   def create
     @book_log = BookLog.new(book_log_params)
     if @book_log.save
-      redirect_to @book_log, notice: 'データが正常に作成されました'
+      redirect_to book_logs_path, notice: 'データが正常に作成されました'
     else
       flash.now[:errors] = @book_log.errors.full_messages
       render 'new'
