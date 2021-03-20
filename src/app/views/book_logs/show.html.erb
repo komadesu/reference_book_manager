@@ -1,2 +1,19 @@
-<h1>BookLogs#show</h1>
-<p>Find me in app/views/book_logs/show.html.erb</p>
+<header>
+  <h1>参考書管理アプリ</h1>
+</header>
+
+<h2>詳細画面</h2>
+
+<%= flash[:notice] %>
+
+<p>書籍名:<%= @book_log.title %></p>
+<p>著者名:<%= @book_log.author %></p>
+<p>読書状況:<%= @book_log.status %></p>
+<p>評価:<%= @book_log.score %></p>
+<p>感想:<%= @book_log.summary %></p>
+<p>作成日時:<%= @book_log.created_at %></p>
+<p>更新日時:<%= @book_log.updated_at %></p>
+
+<%= link_to '戻る', book_logs_path %>
+<%= link_to '更新', edit_book_log_path %>
+
