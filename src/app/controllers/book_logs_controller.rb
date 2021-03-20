@@ -1,5 +1,6 @@
 class BookLogsController < ApplicationController
   def index
+    @book_logs = BookLog.all
   end
 
   def new
