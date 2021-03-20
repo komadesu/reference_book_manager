@@ -1,2 +1,31 @@
-<h1>BookLogs#edit</h1>
-<p>Find me in app/views/book_logs/edit.html.erb</p>
+<header>
+  <h1>参考書管理アプリ</h1>
+</header>
+
+<h2>編集画面</h2>
+
+<%= render 'error_form', locals: { errors: flash[:errors] } %>
+
+<%= form_with model: @book_log, local: true do |f| %>
+  <%= f.label :title, '書籍名' %>
+  <%= f.text_field :title %>
+  <%= f.label :author, '著者名' %>
+  <%= f.text_field :author %>
+
+  <%= f.radio_button :status, :unread, checked: true %>
+  <%= f.label :status, '未読', {value: :unread} %>
+  <%= f.radio_button :status, :reading %>
+  <%= f.label :status, '途中', {value: :reading} %>
+  <%= f.radio_button :status, :read %>
+  <%= f.label :status, '読了', {value: :read} %>
+
+  <%= f.label :score, '評価(5点満点の整数)' %>
+  <%= f.number_field :score %>
+
+  <%= f.label :summary, '感想' %>
+  <%= f.text_area :summary %>
+  <%= f.submit '作成' %>
+<% end %>
+
+<%= link_to '戻る', @book_log %>
+

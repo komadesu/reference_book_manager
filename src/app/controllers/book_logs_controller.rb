@@ -22,9 +22,17 @@ class BookLogsController < ApplicationController
   end
 
   def edit
+    @book_log = BookLog.find(params[:id])
   end
 
   def update
+    @book_log = BookLog.find(params[:id])
+    if @book_log.update(book_log_params)
+      redirect_to @book_log, notice: 'データが正常に編集されました'
+    else
+      flash.now[:errors] = @book_log.errors.full_messages
+      render 'edit'
+    end
   end
 
   def destroy
