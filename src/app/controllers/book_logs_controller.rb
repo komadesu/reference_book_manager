@@ -28,6 +28,9 @@ class BookLogsController < ApplicationController
   end
 
   def destroy
+    book_log = BookLog.find(params[:id])
+    book_log.destroy
+    redirect_to book_logs_path, alert: "id:#{book_log.id}の参考書データを一件削除しました"
   end
 
   private
