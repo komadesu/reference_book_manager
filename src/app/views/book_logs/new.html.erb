@@ -1,31 +1,40 @@
-<header>
-  <h1>参考書管理アプリ</h1>
-</header>
-
-<h2>新規画面</h2>
-
 <%= render 'error_form', locals: { errors: flash[:errors] } %>
 
+<h2 class="h3 mb-4">新規画面</h2>
+
 <%= form_with model: @book_log, local: true do |f| %>
-  <%= f.label :title, '書籍名' %>
-  <%= f.text_field :title %>
-  <%= f.label :author, '著者名' %>
-  <%= f.text_field :author %>
-
-  <%= f.radio_button :status, :unread, checked: true %>
-  <%= f.label :status, '未読', {value: :unread} %>
-  <%= f.radio_button :status, :reading %>
-  <%= f.label :status, '途中', {value: :reading} %>
-  <%= f.radio_button :status, :read %>
-  <%= f.label :status, '読了', {value: :read} %>
-
-  <%= f.label :score, '評価(5点満点の整数)' %>
-  <%= f.number_field :score %>
-
-  <%= f.label :summary, '感想' %>
-  <%= f.text_area :summary %>
-  <%= f.submit '作成' %>
+  <div class="form-group">
+    <%= f.label :title, '書籍名' %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :author, '著者名' %>
+    <%= f.text_field :author, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <p>読書状況</p>
+    <div class="form-check-inline">
+      <%= f.radio_button :status, :unread, checked: true, class: 'form-check-input' %>
+      <%= f.label :status, '未読', value: :unread, class: 'form-check-label' %>
+    </div>
+    <div class="form-check-inline">
+      <%= f.radio_button :status, :reading, class: 'form-check-input' %>
+      <%= f.label :status, '途中', value: :reading, class: 'form-check-label' %>
+    </div>
+    <div class="form-check-inline">
+      <%= f.radio_button :status, :read, class: 'form-check-input' %>
+      <%= f.label :status, '読了', value: :read, class: 'form-check-label' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :score, '評価(5点満点の整数)' %>
+    <%= f.number_field :score, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :summary, '感想' %>
+    <%= f.text_area :summary, class: 'form-control' %>
+  </div>
+  <%= link_to '戻る', book_logs_path, class: 'btn btn-info' %>
+  <%= f.submit '作成', class: 'btn btn-primary' %>
 <% end %>
-
-<%= link_to '戻る', book_logs_path %>
 
