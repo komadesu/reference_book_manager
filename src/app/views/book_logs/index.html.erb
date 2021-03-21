@@ -1,16 +1,12 @@
-<header>
-  <h1>参考書管理アプリ</h1>
-</header>
+<h2 class="h3 mb-4">一覧画面</h2>
 
-<h2>一覧画面</h2>
+<p class="notice"><%= notice %></p>
+<p class="danger"><%= alert %></p>
 
-<%= link_to '新規作成', new_book_log_path %>
+<%= link_to '新規作成', new_book_log_path, class: 'btn btn-primary mb-4' %>
 
-<%= notice %>
-<%= alert %>
-
-<table>
-  <thead>
+<table class="table table-hover table-striped table-borderless">
+  <thead class="thead-dark">
     <tr>
       <th>書籍名</th>
       <th></th>
